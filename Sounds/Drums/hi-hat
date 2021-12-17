@@ -1,0 +1,13 @@
+
+
+(
+SynthDef("help-WhiteNoise", { var sig, env;
+	env = XLine.kr(1,0.001, 0.125, doneAction: 2);
+	sig = HPF.ar(WhiteNoise.ar(0.25), 3000)!2;
+	sig = sig * env;
+    Out.ar(0,
+        sig )
+}).add;
+)
+
+y = Synth.new("help-WhiteNoise");
